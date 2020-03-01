@@ -2,7 +2,7 @@ package com.trining.design.singleton;
 
 /**
  * @author ganjx
- * Kjtpay.com Inc. Copyright (c) 2012-2020 All Rights Reserved.
+ * Copyright (c) 2012-2020 All Rights Reserved.
  */
 public class ExecuteRunnable implements  Runnable{
 

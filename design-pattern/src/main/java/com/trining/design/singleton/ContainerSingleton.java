@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author ganjx
- * Kjtpay.com Inc. Copyright (c) 2012-2020 All Rights Reserved.
+ * Copyright (c) 2012-2020 All Rights Reserved.
  */
 public class ContainerSingleton {
 
