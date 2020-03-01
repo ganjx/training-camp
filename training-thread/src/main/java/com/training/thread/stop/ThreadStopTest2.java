@@ -1,4 +1,4 @@
-package com.training.thread;
+package com.training.thread.stop;
 
 import java.util.concurrent.TimeUnit;
 
