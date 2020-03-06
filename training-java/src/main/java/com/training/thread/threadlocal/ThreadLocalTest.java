@@ -3,8 +3,6 @@ package com.training.thread.threadlocal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.ref.WeakReference;
-
 /**
  * @author ganjx
  * Copyright (c) 2012-2020 All Rights Reserved.
