@@ -12,13 +12,14 @@ import java.util.Map;
  * @author ganjx
  * Copyright (c) 2012-2020 All Rights Reserved.
  */
-public class MapOomTest {
+public class MapMetaspaceOomTest {
 
     static Map<String, String> base = new HashMap<>();
 
     /**
      *  运行环境 JDK1.8
-     *  异常信息：Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+     *  （1）第一种情况：异常信息：Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+     *  （2）当设置 -XX:MaxMetaspaceSize=1M后，异常信息为：OutOfMemoryError: Metaspace
      * @param args
      */
     public static void main(String[] args) {
