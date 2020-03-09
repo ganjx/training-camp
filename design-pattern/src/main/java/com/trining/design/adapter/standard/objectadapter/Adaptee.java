@@ -1,4 +1,4 @@
-package com.trining.design.adapter.objectadapter;
+package com.trining.design.adapter.standard.objectadapter;
 
 
 public class Adaptee{

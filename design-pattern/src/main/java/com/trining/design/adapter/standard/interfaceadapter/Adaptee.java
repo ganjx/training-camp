@@ -1,4 +1,4 @@
-package com.trining.design.adapter.interfaceadapter;
+package com.trining.design.adapter.standard.interfaceadapter;
 
 
 public class Adaptee {
