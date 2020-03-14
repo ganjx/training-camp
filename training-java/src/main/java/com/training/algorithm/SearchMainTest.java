@@ -1,0 +1,31 @@
+/**
+ * Kjtpay.com Inc. Copyright (c) 2012-2020 All Rights Reserved.
+ */
+package com.training.algorithm;
+
+
+public class SearchMainTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] intArray = {1,2,3,4,5};
+		int search = search(intArray,intArray.length -1 ,6);
+		System.err.println(search);
+	}
+
+	// 从a[1]...a[n] 搜索是否有给定值
+	public static int search(int[] intArray, int length, int key) {
+		int i;
+		// 0 赋值为给定值
+		intArray[0] = key;
+		i =  length;
+		while(intArray[i] != key) {
+			i--;
+		}
+		return i;
+	}
+
+}
