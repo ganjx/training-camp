@@ -1,7 +1,7 @@
 package com.training.algorithm;
 
 
-public class SearchMainTest {
+public class SearchTest {
 
 	/**
 	 * @param args
@@ -9,7 +9,7 @@ public class SearchMainTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] intArray = {1,2,3,4,5};
-		int search = search(intArray,intArray.length -1 ,6);
+		int search = search(intArray,intArray.length -1 ,5);
 		System.err.println(search);
 	}
 

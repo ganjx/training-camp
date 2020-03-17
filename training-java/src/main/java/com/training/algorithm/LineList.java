@@ -3,23 +3,23 @@ package com.training.algorithm;
 
 import java.util.Arrays;
 
-public class LineListTest {
+public class LineList {
 
 	Integer[] obj;
 
 	/**
 	 * 
 	 */
-	public LineListTest() {
+	public LineList() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LineListTest(int init) {
+	public LineList(int init) {
 		// TODO Auto-generated constructor stub
 		obj = new Integer[init];
 	}
 
-	public LineListTest(Integer[] from) {
+	public LineList(Integer[] from) {
 		// TODO Auto-generated constructor stub
 		obj = from;
 	}
@@ -124,7 +124,7 @@ public class LineListTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LineListTest lineList = new LineListTest(new Integer[] {2,10,14,19,51,71});
+		LineList lineList = new LineList(new Integer[] {2,10,14,19,51,71});
 		System.out.println("    初始：" + Arrays.toString(lineList.obj));
 
 		lineList.add(3, 1);
