@@ -1,6 +1,3 @@
-/**
- * Kjtpay.com Inc. Copyright (c) 2012-2020 All Rights Reserved.
- */
 package com.training.algorithm;
 
 import java.util.Arrays;
