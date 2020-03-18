@@ -1,4 +1,4 @@
-package com.training.jvm;
+package com.training.jvm.test;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;

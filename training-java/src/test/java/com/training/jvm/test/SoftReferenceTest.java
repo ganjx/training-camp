@@ -1,4 +1,4 @@
-package com.training.jvm;
+package com.training.jvm.test;
 
 import java.lang.ref.SoftReference;
 
