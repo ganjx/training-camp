@@ -11,6 +11,7 @@
 
     <loggers>
         <logger name="com.training" level="INFO" />
+        <logger name="org.springframework" level="WARN" />
 
         <root level="INFO">
             <appender-ref ref="console"/>
