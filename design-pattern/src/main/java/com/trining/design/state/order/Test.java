@@ -14,7 +14,9 @@ public class Test {
 
         IOrderService orderService = (IOrderService)context.getBean("orderService");
 
+        // 1.创建订单1
         orderService.create();
+        // 2.创建订单2
         orderService.create();
 
         orderService.pay(1);
