@@ -32,6 +32,7 @@ class Test extends A {
     }
 
     public static void main(String[] args) {
+        // CCBB
         new Test();
     }
 }
