@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class DispatcherServlet extends HttpServlet {
+public class DemoDispatcherServlet extends HttpServlet {
 
     private Map<String,Method> handlerMapping = new HashMap<String,Method>();
 
