@@ -1,4 +1,4 @@
-package com.training.springboot.trainingsprintboot;
+package com.training.springboot.first;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

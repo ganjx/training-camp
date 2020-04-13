@@ -1,4 +1,4 @@
-package com.training.springboot.trainingsprintboot;
+package com.training.springboot.first;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
