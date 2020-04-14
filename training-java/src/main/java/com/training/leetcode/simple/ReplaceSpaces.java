@@ -1,4 +1,4 @@
-package com.training.leetcode;
+package com.training.leetcode.simple;
 
 /**
  * @author ganjx
