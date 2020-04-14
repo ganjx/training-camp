@@ -1,4 +1,4 @@
-package com.training.leetcode;
+package com.training.leetcode.model;
 
 public class ListNode {
     public int val;

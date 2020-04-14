@@ -1,8 +1,6 @@
 package com.training.leetcode.medium;
 
-import com.training.leetcode.ListNode;
-
-import java.util.List;
+import com.training.leetcode.model.ListNode;
 
 /**
  * @author ganjx

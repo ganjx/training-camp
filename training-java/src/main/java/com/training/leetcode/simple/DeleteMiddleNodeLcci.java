@@ -1,6 +1,6 @@
 package com.training.leetcode.simple;
 
-import com.training.leetcode.ListNode;
+import com.training.leetcode.model.ListNode;
 
 /**
  * @author ganjx
