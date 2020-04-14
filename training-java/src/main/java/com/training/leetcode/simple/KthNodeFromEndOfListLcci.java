@@ -1,5 +1,7 @@
 package com.training.leetcode.simple;
 
+import com.training.leetcode.ListNode;
+
 /**
  * @author ganjx
  * Copyright (c) 2012-2020 All Rights Reserved.

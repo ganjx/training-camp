@@ -1,6 +1,6 @@
 package com.training.leetcode.simple;
 
-import java.util.Arrays;
+import com.training.leetcode.ListNode;
 
 /**
  * @author ganjx
