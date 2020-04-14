@@ -72,13 +72,19 @@ public class RotateMatrixLcci {
         for (int i = 0; i < matrix.length; i++) {
             int[] matrixItem = matrix[i];
             for (int j = 0; j < matrixItem.length; j++) {
-                System.out.println("i:" + i + ",j:" + matrixItem[j]);
+//                System.out.println("i:" + i + ",j:" + matrixItem[j]);
             }
         }
     }
 
     // 思路： 先将其斜对角翻折，再对每行以中点为中心翻折
     public static void rotate(int[][] matrix) {
+        /**
+         * 位置  0,1<=>1,0  0,2<=>2,0   1,2 <=>2,1
+         *  1 2 3      1 4 7
+         *  4 5 6  =>  2 5 8
+         *  7 8 9      3 6 9
+         */
         for (int i = 0; i < matrix.length; i++) {
             for (int j = i + 1; j < matrix[0].length; j++) {
                 int t = matrix[i][j];
@@ -87,10 +93,18 @@ public class RotateMatrixLcci {
             }
         }
 
+        /**
+         * 位置： 0,0 <=> 0,2  1,0<=>1,2
+         * 1 4 7    7 4 1
+         * 2 5 8 => 8 5 2
+         * 3 6 9    9 6 3
+         */
         int n = matrix.length;
         int mid = n / 2;
+        System.out.println(mid);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < mid; j++) {
+                System.out.println(i+","+j+","+(n - j - 1));
                 int t = matrix[i][j];
                 matrix[i][j] = matrix[i][n - j - 1];
                 matrix[i][n - j - 1] = t;
