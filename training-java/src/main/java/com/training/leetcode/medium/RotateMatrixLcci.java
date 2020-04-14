@@ -101,7 +101,6 @@ public class RotateMatrixLcci {
          */
         int n = matrix.length;
         int mid = n / 2;
-        System.out.println(mid);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < mid; j++) {
                 System.out.println(i+","+j+","+(n - j - 1));
