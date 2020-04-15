@@ -28,13 +28,7 @@ public class PalindromeLinkedListLcci {
      * @param args
      */
     public static void main(String[] args) {
-        ListNode listNode1 = ListNodeUtils.build(new int[]{1, 2});
-        ListNode listNode2 = ListNodeUtils.build(new int[]{1, 2, 2, 1});
-
-
-        System.out.println(isPalindrome(listNode1));
-        System.out.println(isPalindrome(listNode2));
-        System.out.println(isPalindrome(ListNodeUtils.build(new int[]{1})));
+        System.out.println(isPalindrome(ListNodeUtils.build(new int[]{1, 2, 2, 1})));
     }
 
     /**
@@ -42,7 +36,9 @@ public class PalindromeLinkedListLcci {
      * @return
      */
     public static boolean isPalindrome(ListNode head) {
+        // 链表反转
         ListNode reversed = reverseAndClone(head);
+        // 和原始列表对比
         return isEqual(head, reversed);
 
     }
@@ -50,14 +46,24 @@ public class PalindromeLinkedListLcci {
     public static ListNode reverseAndClone(ListNode node) {
         ListNode head = null;
         while (node != null) {
-            ListNode n = new ListNode(node.val); //复制
+            // 复制节点
+            ListNode n = new ListNode(node.val);
+            // 此时head指向上一个节点
             n.next = head;
+            // head指向当前节点，当前n为链表最后一个节点
             head = n;
+            // 正向遍历节点
             node = node.next;
         }
         return head;
     }
 
+    /**
+     * 比对每个节点的值是否相同
+     * @param one
+     * @param two
+     * @return
+     */
     public static boolean isEqual(ListNode one, ListNode two) {
         while (one != null && two != null) {
             if (one.val != two.val) {

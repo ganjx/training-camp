@@ -1,5 +1,6 @@
 package com.training.leetcode.util;
 
+import com.sun.org.apache.xpath.internal.operations.String;
 import com.training.leetcode.model.ListNode;
 
 /**
@@ -35,10 +36,22 @@ public class ListNodeUtils {
         return head;
     }
 
+    /**
+     * print listNode
+     */
+    static StringBuilder stringBuilder = new StringBuilder();
     public static void print(ListNode head) {
-        System.out.println(head.val);
+        stringBuilder.append(head.val).append(",");
         if (head.next != null) {
             print(head.next);
+        }
+        else{
+            // delete last one
+            stringBuilder.deleteCharAt(stringBuilder.length()-1);
+            // system print
+            System.out.println(stringBuilder.toString());
+            // clear to empty
+            stringBuilder.delete(0,stringBuilder.length());
         }
     }
 }
