@@ -19,6 +19,7 @@ public class CGlibMeipo implements MethodInterceptor {
     }
 
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+        // 如果是Object类自带的方法，可以不用增强，如toString等
         before();
         Object obj = methodProxy.invokeSuper(o,objects);
         after();
@@ -26,11 +27,10 @@ public class CGlibMeipo implements MethodInterceptor {
     }
 
     private void before(){
-        System.out.println("我是媒婆，我要给你找对象，现在已经确认你的需求");
-        System.out.println("开始物色");
+        System.out.println("before......");
     }
 
     private void after(){
-        System.out.println("OK的话，准备办事");
+        System.out.println("after...");
     }
 }

@@ -21,11 +21,11 @@ public class CglibTest {
 
             //CGLib 有个坑，CGLib不能代理final的方法
 
-            System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY,"E://cglib_proxy_classes");
+//            System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY,"E://cglib_proxy_classes");
 
             Customer obj = (Customer) new CGlibMeipo().getInstance(Customer.class);
             System.out.println(obj);
-            obj.findLove();
+//            obj.findLove();
         } catch (Exception e) {
             e.printStackTrace();
         }
