@@ -18,8 +18,9 @@ public class SynchronizedTest {
         poolService.execute(new Worker("A", count, lock));
         poolService.execute(new Worker("B", count, lock));
         poolService.execute(new Worker("C", count, lock));
-        Thread.sleep(1000);
-        poolService.shutdownNow();
+
+        // wait for shutdown
+        poolService.shutdown();
     }
 
     public static class Worker implements Runnable {
