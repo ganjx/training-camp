@@ -19,7 +19,10 @@ public class SynchronizedTest {
         poolService.execute(new Worker("B", count, lock));
         poolService.execute(new Worker("C", count, lock));
 
-        // wait for shutdown
+        /**
+         * shutdown只是将线程池的状态设置为SHUTWDOWN状态，正在执行的任务会继续执行下去，没有被执行的则中断。
+         * shutdownNow则是将线程池的状态设置为STOP，正在执行的任务则被停止，没被执行任务的则返回。
+         */
         poolService.shutdown();
     }
 
