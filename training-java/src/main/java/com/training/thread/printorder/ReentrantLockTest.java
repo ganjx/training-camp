@@ -24,8 +24,11 @@ public class ReentrantLockTest {
         poolService.execute(new Worker("A", count, 1, lock, conditionA, conditionB));
         poolService.execute(new Worker("B", count, 2, lock, conditionB, conditionC));
         poolService.execute(new Worker("C", count, 3, lock, conditionC, conditionA));
-        Thread.sleep(5000);
-        poolService.shutdownNow();
+        /**
+         * shutdown只是将线程池的状态设置为SHUTWDOWN状态，正在执行的任务会继续执行下去，没有被执行的则中断。
+         * shutdownNow则是将线程池的状态设置为STOP，正在执行的任务则被停止，没被执行任务的则返回。
+         */
+        poolService.shutdown();
     }
 
     public static class Worker implements Runnable {
