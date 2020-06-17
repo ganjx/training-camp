@@ -1,7 +1,5 @@
 package com.training.leetcode.simple;
 
-import java.util.Arrays;
-
 /**
  * @author ganjx
  * Copyright (c) 2012-2020 All Rights Reserved.
@@ -35,14 +33,19 @@ public class CheckPermutation {
 
     public static boolean CheckPermutation(String s1, String s2) {
         // 思路三：使用一个数组，记录字符的出现位数，若出现不相等的情况就返回false。
-        if (s1.length() != s2.length()) return false;
-        int[] map = new int[26]; //  总共26个字母，所以申请长度为26的int数组
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+        //  总共26个字母，所以申请长度为26的int数组
+        int[] map = new int[26];
         for (byte a : s1.getBytes()) {
             map[a - 'a']++;  // 使用字符-a得到数组上的位置，如果有重复，则递增
         }
         for (byte a : s2.getBytes()) {
             map[a - 'a']--;  // 在对应的位置上递减，如果小于0，说明在该位置上不存在字符
-            if (map[a - 'a'] < 0) return false;
+            if (map[a - 'a'] < 0) {
+                return false;
+            }
         }
         return true;
 

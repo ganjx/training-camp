@@ -2,8 +2,6 @@ package com.training.redis;
 
 import redis.clients.jedis.Jedis;
 
-import java.util.concurrent.*;
-
 public class RedisMain {
 
     public static void main(String[] args) throws InterruptedException {
