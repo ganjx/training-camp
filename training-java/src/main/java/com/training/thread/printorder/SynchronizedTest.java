@@ -1,7 +1,6 @@
 package com.training.thread.printorder;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * @author ganjx
@@ -12,7 +11,11 @@ public class SynchronizedTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ExecutorService poolService = Executors.newFixedThreadPool(3);
+        int nThreads = 3;
+        // change "Executors.newFixedThreadPool(3);" to "new ThreadPoolExecutor"
+        ExecutorService poolService = new ThreadPoolExecutor(nThreads, nThreads,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());
         Integer count = 10;
         Object lock = new Object();
         poolService.execute(new Worker("A", count, lock));
