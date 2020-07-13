@@ -1,8 +1,5 @@
 package com.training.thread.alternately;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 /**
  * @author ganjx
  * Copyright (c) 2012-2020 All Rights Reserved.
@@ -48,10 +45,38 @@ public class PrintFoobarAlternately {
      *
      * @param args
      */
+    public static void main(String[] args) throws InterruptedException {
+        PrintFoobarAlternately p = new PrintFoobarAlternately(5);
+        new Thread() {
+            public void run() {
+                try {
+                    p.foo(() -> {
+                        System.out.print("foo");
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+        new Thread() {
+            public void run() {
+                try {
+                    p.bar(() -> {
+                        System.out.print("Bar");
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
 
 
+    // 循环次数
     private int n;
-    private boolean fooTurn = true;
+    //
+    private volatile boolean fooTurn = true;
+    // 对象锁
     private Object lock = new Object();
 
     public PrintFoobarAlternately(int n) {
@@ -62,7 +87,9 @@ public class PrintFoobarAlternately {
 
         for (int i = 0; i < n; i++) {
             synchronized (lock) {
-                if (!fooTurn) lock.wait();
+                if (!fooTurn) {
+                    lock.wait();
+                }
                 fooTurn = false;
                 // printFoo.run() outputs "foo". Do not change or remove this line.
                 printFoo.run();
@@ -75,7 +102,9 @@ public class PrintFoobarAlternately {
 
         for (int i = 0; i < n; i++) {
             synchronized (lock) {
-                if (fooTurn) lock.wait();
+                if (fooTurn) {
+                    lock.wait();
+                }
                 fooTurn = true;
                 // printBar.run() outputs "bar". Do not change or remove this line.
                 printBar.run();
@@ -85,30 +114,5 @@ public class PrintFoobarAlternately {
     }
 
 
-    public static void main(String[] args) throws InterruptedException {
-        PrintFoobarAlternately p = new PrintFoobarAlternately(5);
-        new Thread() {
-            public void run() {
-                try {
-                    p.foo(()->{
-                        System.out.print("foo");
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
-        new Thread() {
-            public void run() {
-                try {
-                    p.bar(()->{
-                        System.out.print("Bar");
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
-    }
 }
 
