@@ -1,10 +1,8 @@
 package com.training.leetcode.concurrency.simple;
 
-/**
- *
- */
-public class PrintInOrder {
+import java.util.concurrent.atomic.AtomicInteger;
 
+public class PrintInOrder2 {
 
     /**
      * 我们提供了一个类：
@@ -46,15 +44,14 @@ public class PrintInOrder {
      *
      * @param args
      */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
+        PrintInOrder2 printInOrder = new PrintInOrder2();
 
-        PrintInOrder printInOrder = new PrintInOrder();
 
-
-        Thread thread1 = new Thread(()->{
+        Thread thread1 = new Thread(() -> {
 
             try {
-                printInOrder.first(()->{
+                printInOrder.first(() -> {
                     System.out.println("first");
                 });
             } catch (InterruptedException e) {
@@ -62,20 +59,12 @@ public class PrintInOrder {
             }
         });
 
-        Thread thread3 = new Thread(()->{
-            try {
-                printInOrder.third(()->{
-                    System.out.println("third");
-                });
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
 
-        Thread thread2 = new Thread(()->{
+
+        Thread thread2 = new Thread(() -> {
 
             try {
-                printInOrder.second(()->{
+                printInOrder.second(() -> {
                     System.out.println("second");
                 });
             } catch (InterruptedException e) {
@@ -83,50 +72,47 @@ public class PrintInOrder {
             }
         });
 
+        Thread thread3 = new Thread(() -> {
+            try {
+                printInOrder.third(() -> {
+                    System.out.println("third");
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
 
         thread1.start();
         thread2.start();
         thread3.start();
-
     }
 
-
-    private volatile boolean firstFinished;
-    private volatile boolean secondFinished;
-    private Object lock = new Object();
-
+    private AtomicInteger firstJobDone = new AtomicInteger(0);
+    private AtomicInteger secondJobDone = new AtomicInteger(0);
 
     public void first(Runnable printFirst) throws InterruptedException {
-        synchronized (lock) {
-            // printFirst.run() outputs "first". Do not change or remove this line.
-            printFirst.run();
-            firstFinished = true;
-            lock.notifyAll();
-        }
+        // printFirst.run() outputs "first".
+        printFirst.run();
+        // mark the first job as done, by increasing its count.
+        firstJobDone.incrementAndGet();
     }
 
     public void second(Runnable printSecond) throws InterruptedException {
-        synchronized (lock) {
-            while (!firstFinished) {
-                lock.wait();
-            }
-
-            // printSecond.run() outputs "second". Do not change or remove this line.
-            printSecond.run();
-            secondFinished = true;
-            lock.notifyAll();
+        while (firstJobDone.get() != 1) {
+            // waiting for the first job to be done.
         }
+        // printSecond.run() outputs "second".
+        printSecond.run();
+        // mark the second as done, by increasing its count.
+        secondJobDone.incrementAndGet();
     }
 
     public void third(Runnable printThird) throws InterruptedException {
-        synchronized (lock) {
-            while (!secondFinished) {
-                lock.wait();
-            }
-
-            // printThird.run() outputs "third". Do not change or remove this line.
-            printThird.run();
+        while (secondJobDone.get() != 1) {
+            // waiting for the second job to be done.
         }
+        // printThird.run() outputs "third".
+        printThird.run();
     }
 }
