@@ -92,8 +92,8 @@ public class PrintInOrder {
     }
 
 
-    private boolean firstFinished;
-    private boolean secondFinished;
+    private volatile boolean firstFinished;
+    private volatile boolean secondFinished;
     private Object lock = new Object();
 
 
