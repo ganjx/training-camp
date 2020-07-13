@@ -33,14 +33,17 @@ public class SynchronizedTest {
         private String key;
         private Integer count;
         private Object lock;
+
         public Worker(String key, Integer count, Object lock) {
             this.key = key;
             this.count = count;
-            this.lock  = lock;
+            this.lock = lock;
         }
+
+        @Override
         public void run() {
-            for(int i = 0; i < count; i++) {
-                if(key == "A") {
+            for (int i = 0; i < count; i++) {
+                if (key == "A") {
                     synchronized (lock) {
                         while (state != 1) {
                             try {
@@ -49,11 +52,11 @@ public class SynchronizedTest {
                                 e.printStackTrace();
                             }
                         }
-                        System.out.println(i+","+key);
+                        System.out.println(i + "," + key);
                         state = 2;
                         lock.notifyAll();
                     }
-                } else if(key == "B") {
+                } else if (key == "B") {
                     synchronized (lock) {
                         while (state != 2) {
                             try {
@@ -62,7 +65,7 @@ public class SynchronizedTest {
                                 e.printStackTrace();
                             }
                         }
-                        System.out.println(i+","+key);
+                        System.out.println(i + "," + key);
                         state = 3;
                         lock.notifyAll();
                     }
@@ -75,7 +78,7 @@ public class SynchronizedTest {
                                 e.printStackTrace();
                             }
                         }
-                        System.out.println(i+","+key);
+                        System.out.println(i + "," + key);
                         state = 1;
                         lock.notifyAll();
                     }

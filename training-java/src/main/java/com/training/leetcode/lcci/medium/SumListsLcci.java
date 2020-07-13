@@ -1,4 +1,4 @@
-package com.training.leetcode.medium;
+package com.training.leetcode.lcci.medium;
 
 import com.training.leetcode.model.ListNode;
 import com.training.leetcode.util.ListNodeUtils;

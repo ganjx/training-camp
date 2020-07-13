@@ -1,4 +1,4 @@
-package com.training.leetcode.medium;
+package com.training.leetcode.lcci.medium;
 
 /**
  * @author ganjx

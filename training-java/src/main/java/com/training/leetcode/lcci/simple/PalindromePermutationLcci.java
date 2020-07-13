@@ -1,8 +1,4 @@
-package com.training.leetcode.simple;
-
-import javafx.scene.SceneAntialiasing;
-
-import java.util.Arrays;
+package com.training.leetcode.lcci.simple;
 
 /**
  * @author ganjx

@@ -1,8 +1,6 @@
 package com.training.thread.printorder;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 
 /**
  * @author ganjx
@@ -12,10 +10,14 @@ public class SemaphoreTest {
 
     public static void main(String[] args) throws InterruptedException {
         Semaphore a = new Semaphore(1);
-        Semaphore b  = new Semaphore(0);
+        Semaphore b = new Semaphore(0);
         Semaphore c = new Semaphore(0);
 
-        ExecutorService poolService = Executors.newFixedThreadPool(3);
+        int nThreads = 3;
+        ExecutorService poolService = new ThreadPoolExecutor(nThreads, nThreads,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());
+
         Integer count = 10;
         poolService.execute(new Worker(a, b, "A", count));
         poolService.execute(new Worker(b, c, "B", count));
@@ -33,19 +35,21 @@ public class SemaphoreTest {
         private Semaphore current;
         private Semaphore next;
         private Integer count;
+
         public Worker(Semaphore current, Semaphore next, String key, Integer count) {
             this.current = current;
             this.next = next;
             this.key = key;
             this.count = count;
         }
+
         @Override
         public void run() {
-            for(int i = 0; i < count; i++) {
+            for (int i = 0; i < count; i++) {
                 try {
                     //获取当前的锁
                     current.acquire(); //current - 1
-                    System.out.println(i+","+key);
+                    System.out.println(i + "," + key);
                     //释放next的锁
                     next.release();    //next + 1
                 } catch (InterruptedException e) {

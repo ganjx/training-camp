@@ -1,6 +1,4 @@
-package com.training.leetcode.medium;
-
-import java.util.Arrays;
+package com.training.leetcode.lcci.medium;
 
 /**
  * @author ganjx

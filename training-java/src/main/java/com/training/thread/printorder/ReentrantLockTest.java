@@ -1,7 +1,9 @@
 package com.training.thread.printorder;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -18,8 +20,10 @@ public class ReentrantLockTest {
     private static volatile int state = 1;
 
     public static void main(String[] args) throws InterruptedException {
-
-        ExecutorService poolService = Executors.newFixedThreadPool(3);
+        int nThreads = 3;
+        ExecutorService poolService = new ThreadPoolExecutor(nThreads, nThreads,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());
         Integer count = 10;
         poolService.execute(new Worker("A", count, 1, lock, conditionA, conditionB));
         poolService.execute(new Worker("B", count, 2, lock, conditionB, conditionC));
@@ -48,6 +52,7 @@ public class ReentrantLockTest {
             this.targetState = targetState;
         }
 
+        @Override
         public void run() {
             this.lock.lock();
             try {
