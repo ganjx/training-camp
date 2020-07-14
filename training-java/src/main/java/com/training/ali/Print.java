@@ -38,7 +38,7 @@ public class Print {
                                 e.printStackTrace();
                             }
                         }
-                        System.out.println(count.getAndIncrement());
+                        System.out.println(Thread.currentThread().getName()+"=>"+count.getAndIncrement());
                         state = 2;
                         obj.notifyAll();
                     }
@@ -51,7 +51,7 @@ public class Print {
                                 e.printStackTrace();
                             }
                         }
-                        System.out.println(count.getAndIncrement());
+                        System.out.println(Thread.currentThread().getName()+"=>"+count.getAndIncrement());
                         state = 1;
                         obj.notifyAll();
                     }
