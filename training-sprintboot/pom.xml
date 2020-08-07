@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.training.springboot</groupId>
-    <artifactId>sprintboot-first</artifactId>
+    <artifactId>training-sprintboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>training-sprintboot</name>
     <description>Demo project for Spring Boot</description>
