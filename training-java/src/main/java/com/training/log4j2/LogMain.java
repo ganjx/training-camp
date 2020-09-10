@@ -7,8 +7,12 @@ public class LogMain {
 
     static Logger logger = LoggerFactory.getLogger(LogMain.class);
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
+//        int count = 1000;
+//        for (int i = 0; i < count; i++) {
+//            logger.info("i->{}",i);
+//            Thread.sleep(100);
+//        }
         logger.info("test");
     }
 }

@@ -7,10 +7,20 @@
             <PatternLayout charset="UTF-8"
                            pattern="[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] %l - %m%n"/>
         </console>
+
+        <!-- Async Loggers will auto-flush in batches, so switch off immediateFlush. -->
+        <RandomAccessFile name="RandomAccessFile" fileName="/logs/async.log" immediateFlush="false" append="false">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+            </PatternLayout>
+        </RandomAccessFile>
     </appenders>
 
     <loggers>
-        <logger name="com.training" level="INFO" />
+        <logger name="com.training" level="INFO"/>
+        <AsyncLogger name="com.training.log4j2" level="INFO" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
 
         <root level="INFO">
             <appender-ref ref="console"/>
