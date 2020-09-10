@@ -8,12 +8,19 @@
                            pattern="[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] %l - %m%n"/>
         </console>
 
+        <!--1 sample-->
         <!-- Async Loggers will auto-flush in batches, so switch off immediateFlush. -->
         <RandomAccessFile name="RandomAccessFile" fileName="/logs/async.log" immediateFlush="false" append="false">
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
             </PatternLayout>
         </RandomAccessFile>
+
+        <!-- AsyncAppender Sample -->
+        <!--        <Async name="Async" bufferSize="262144">-->
+        <!--            <AppenderRef ref="RandomAccessFile"/>-->
+        <!--            <LinkedTransferQueue/>-->
+        <!--        </Async>-->
     </appenders>
 
     <loggers>
@@ -21,6 +28,9 @@
         <AsyncLogger name="com.training.log4j2" level="INFO" includeLocation="true">
             <AppenderRef ref="RandomAccessFile"/>
         </AsyncLogger>
+        <!--        <logger name="com.training.log4j2" level="INFO">-->
+        <!--            <AppenderRef ref="Async"/>-->
+        <!--        </logger>-->
 
         <root level="INFO">
             <appender-ref ref="console"/>
