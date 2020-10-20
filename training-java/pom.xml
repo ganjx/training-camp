@@ -27,6 +27,12 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.1</version>
+        </dependency>
         <!-- cmyk格式图片转换 -->
         <dependency>
             <groupId>com.twelvemonkeys.imageio</groupId>
