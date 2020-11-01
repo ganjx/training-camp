@@ -15,6 +15,7 @@ import java.util.Date;
 public class LocalDateTimeTest {
 
     public static final String format = "yyyy-MM-dd HH:mm:ss";
+
     public static void main(String[] args) {
 
         Date date = getLastMonthDay("202011");
@@ -45,18 +46,17 @@ public class LocalDateTimeTest {
 
     public static LocalDate getLastMonthDay2(String yearMonth) {
         LocalDate firstMonthDay2 = getFirstMonthDay2(yearMonth);
-        return  firstMonthDay2.plusMonths(1).minusDays(1);
+        return firstMonthDay2.plusMonths(1).minusDays(1);
     }
 
 
-
-        public static LocalDateTime parse(String stringDate,String pattern) {
+    public static LocalDateTime parse(String stringDate, String pattern) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
         LocalDateTime time = LocalDateTime.parse(stringDate, dateTimeFormatter);
         return time;
     }
 
-    public static Date fromLocalDateTime(LocalDateTime localDateTime){
+    public static Date fromLocalDateTime(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 }
